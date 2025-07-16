@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Left on Read!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1 class="game-title">Left On Read!</h1>
+    <div class="container">
+        <!-- Header with action buttons -->
+        <div class="header">
+            <div id="normalHeader">
+                <button id="revealButton" class="action-btn">Reveal Conversation</button>
+            </div>
+            <div id="revealHeader" style="display: none;">
+                <button id="restartButton" class="action-btn">Restart</button>
+            </div>
+        </div>
+
+        <!-- Chat messages container -->
+        <div id="chatMessages" class="chat-messages">
+            <!-- Messages will be added here -->
+        </div>
+
+        <!-- Message input -->
+        <div class="message-input">
+            <input type="text" id="messageInput" placeholder="Type a message...">
+            <button id="sendButton">Send</button>
+        </div>
+    </div>
+
+    <!-- Hidden message templates -->
+    <template id="hiddenMessageTemplate">
+        <div class="message hidden-message">
+            <span class="hidden-emoji">🤔🤫</span>
+            <span class="message-text" style="display: none;"></span>
+        </div>
+    </template>
+
+    <template id="visibleMessageTemplate">
+        <div class="message visible-message">
+            <span class="message-text"></span>
+        </div>
+    </template>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
