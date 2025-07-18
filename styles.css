@@ -201,6 +201,32 @@ body {
     background: #a8a8a8;
 }
 
+/* Welcome message */
+.welcome-message {
+    padding: 20px;
+    color: #333;
+    line-height: 1.6;
+    white-space: pre-line;
+    text-align: left;
+    overflow-y: auto;
+    height: 100%;
+}
+
+.welcome-message h2 {
+    color: #0084ff;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.welcome-message ol {
+    padding-left: 20px;
+    margin: 15px 0;
+}
+
+.welcome-message li {
+    margin-bottom: 10px;
+}
+
 /* Modal styles */
 .modal {
     display: none;

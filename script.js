@@ -14,6 +14,23 @@ const visibleMessageTemplate = document.getElementById('visibleMessageTemplate')
 let messages = [];
 let isRevealed = false;
 
+// Welcome message
+const WELCOME_MESSAGE = `Welcome to 'Left On Read', where your conversations derail like a car running red on a left hand turn!
+
+Players: 2-5 (or more. IDK, I'm not the game police.)
+
+1) Player 1 comes up with a prompt that sets the game going and types it into the textbox below. 
+
+2) After typing in the message in the text field and pressing 'Send', pass the phone off to the next player! 
+
+3) The next player will then attempt to continue the conversation the same way as Step 2, but can only see what the last player sent!
+
+4) Gameplay continues until everyone has had a chance to 'text', or until enough time has passed in a lightning round.
+
+5) Once all turns are complete, press the 'Reveal' button at the top to showcase how the conversation went! Did everyone think alike as a big brain, or did the conversation totally go sideways? Either way, laugh and enjoy the outcome!
+
+6) Once done reacting, press the 'Restart' button at the top to wipe all messages and play again!`;
+
 // Initialize the chat
 function initChat() {
     messages = [];
@@ -22,6 +39,16 @@ function initChat() {
     normalHeader.style.display = 'block';
     revealHeader.style.display = 'none';
     isRevealed = false;
+    
+    // Show welcome message
+    const welcomeDiv = document.createElement('div');
+    welcomeDiv.className = 'welcome-message';
+    welcomeDiv.textContent = WELCOME_MESSAGE;
+    chatMessages.appendChild(welcomeDiv);
+    
+    // Enable input
+    messageInput.disabled = false;
+    sendButton.disabled = false;
 }
 
 // Add a new message to the chat
@@ -38,6 +65,15 @@ function addMessage(text, isHidden = true) {
 // Render all messages based on current state
 function renderMessages() {
     chatMessages.innerHTML = '';
+    
+    // Don't show welcome message if there are actual messages
+    if (messages.length === 0) {
+        const welcomeDiv = document.createElement('div');
+        welcomeDiv.className = 'welcome-message';
+        welcomeDiv.textContent = WELCOME_MESSAGE;
+        chatMessages.appendChild(welcomeDiv);
+        return;
+    }
     
     messages.forEach((message, index) => {
         if (isRevealed) {
