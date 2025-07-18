@@ -68,8 +68,11 @@ function renderMessages() {
         }
     });
     
-    // Scroll to bottom
-    chatMessages.scrollTop = chatMessages.scrollHeight;
+    // Scroll to bottom with smooth behavior
+    chatMessages.scrollTo({
+        top: chatMessages.scrollHeight,
+        behavior: 'smooth'
+    });
 }
 
 // Handle sending a message
@@ -78,6 +81,13 @@ function sendMessage() {
     if (text) {
         addMessage(text, false);
         messageInput.value = '';
+        // Ensure we're scrolled to bottom after message is added and rendered
+        setTimeout(() => {
+            chatMessages.scrollTo({
+                top: chatMessages.scrollHeight,
+                behavior: 'smooth'
+            });
+        }, 50);
     }
 }
 
